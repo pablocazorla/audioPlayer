@@ -1,0 +1,318 @@
+/* STYLE.LESS */
+.user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 5px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: none;
+  background: #CCC;
+  border-radius: 0;
+  border: 1px solid transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid #BBB;
+  height: 10px;
+  width: 10px;
+  border-radius: 52%;
+  background: #FFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #d9d9d9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: none;
+  background: #CCC;
+  border-radius: 0;
+  border: 1px solid transparent;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid #BBB;
+  height: 10px;
+  width: 10px;
+  border-radius: 52%;
+  background: #FFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 10px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #bfbfbf;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+input[type=range]::-ms-fill-upper {
+  background: #CCC;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid #BBB;
+  height: 10px;
+  width: 10px;
+  border-radius: 52%;
+  background: #FFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #CCC;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #d9d9d9;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  color: #000;
+  background-color: #333;
+  font: 14px/1.5 'Open Sans', sans-serif;
+  border: 5px dashed transparent;
+  -webkit-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+#playlist {
+  position: relative;
+  width: 92%;
+  max-width: 1200px;
+  margin: 60px auto;
+  min-height: 100px;
+  border-radius: 8px;
+  padding: 8px 8px 100px;
+  border: 3px solid #555;
+  -webkit-transition: border 0.2s;
+  -ms-transition: border 0.2s;
+  transition: border 0.2s;
+}
+#playlist .drag-mge {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 15px;
+  color: #FFF;
+  opacity: .5;
+  cursor: default;
+}
+#playlist .clear-list-btn {
+  position: absolute;
+  top: -30px;
+  right: 8px;
+  font-size: 12px;
+  line-height: 30px;
+  color: #F00;
+  cursor: pointer;
+  opacity: .8;
+  font-weight: bold;
+}
+#playlist .clear-list-btn:hover {
+  opacity: 1;
+}
+body.dragover {
+  background-color: #4d4d4d;
+}
+body.dragover #playlist {
+  border: 3px dashed #FFF;
+}
+.song {
+  background-color: #FFF;
+  height: 100px;
+  border-radius: 8px;
+  position: relative;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.song .btns {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 80px;
+}
+.song .play-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  line-height: 75px;
+  width: 100%;
+  background-color: #0d0;
+  color: #FFF;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  border-radius: 8px 0 0 8px;
+  border-right: 1px solid #DDD;
+  -webkit-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.song .play-btn .fa-pause {
+  display: none;
+}
+.song .play-btn.playing {
+  background-color: #d00;
+}
+.song .play-btn.playing .fa-play {
+  display: none;
+}
+.song .play-btn.playing .fa-pause {
+  display: inline;
+}
+.song .stop-btn {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  height: 25px;
+  line-height: 25px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  border-radius: 0 0 0 8px;
+  -webkit-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.song .partiture {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  right: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+.song .partiture .partiture-data {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-right: 20px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 0 0 8px 0;
+}
+.song .partiture .partiture-data .title {
+  display: inline-block;
+  padding: 0 20px;
+}
+.song .partiture .partiture-data .time {
+  opacity: .6;
+  display: inline-block;
+}
+.song .partiture .partiture-data .fa-long-arrow-right {
+  display: inline-block;
+  opacity: .3;
+  margin: 0 5px;
+}
+.song .partiture .partiture-data .duration {
+  display: inline-block;
+  opacity: .6;
+}
+.song .partiture .partiture-graph {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 100px -15px;
+}
+.song .partiture .partiture-graph .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  font-weight: bold;
+}
+.song .tools {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  height: 100px;
+  width: 180px;
+  border-left: 1px solid #DDD;
+  background-color: #EEE;
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.song .tools .label.label-term {
+  margin: 10px 0 3px;
+}
+.song .tools select {
+  width: 100%;
+}
+.song .orderer {
+  border-radius: 0 8px 8px 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100px;
+  width: 20px;
+  border-left: 1px solid #CCC;
+  background-color: #DDD;
+}
+.song .orderer .orderer-btn {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+.song .orderer .orderer-close {
+  top: 0;
+  background-color: #a44;
+  border-radius: 0 7.2px 0 0;
+  color: #EEE;
+}
+.song .orderer .orderer-top {
+  top: 20px;
+  height: 40px;
+  line-height: 40px;
+}
+.song .orderer .orderer-bottom {
+  top: 60px;
+  height: 40px;
+  line-height: 40px;
+  border-top: 1px solid #BBB;
+}

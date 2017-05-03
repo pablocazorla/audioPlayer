@@ -1,0 +1,241 @@
+/* STYLE.LESS */
+
+@import '_functions';
+@import 'range';
+html, body {
+  height: 100%;
+}
+@bc: #333;
+body {
+  
+  color: #000;
+  background-color: @bc;
+  font: 14px/1.5 'Open Sans', sans-serif;
+  border: 5px dashed transparent;
+  .transition(all .2s);
+}
+@h: 100px;
+#playlist {
+	position: relative;
+  width: 92%;
+  max-width: 1200px;
+  margin: 60px auto;
+  min-height: 100px;
+
+  border-radius: 8px;
+  padding: 8px 8px @h;
+   border: 3px solid #555;
+   .transition(border 0.2s);
+  .drag-mge{
+  	position: absolute;
+  	bottom: 0.5 * @h - 10px;
+  	left: 0;
+  	right: 0;
+  	text-align: center;
+  	font-size: 15px;
+  	color: #FFF;
+  	opacity: .5;
+  	cursor: default;
+  }
+  .clear-list-btn{
+  	position: absolute;
+  	top: -30px;
+  	right: 8px;
+  	font-size: 12px;
+  	line-height: 30px;
+  	color:#F00;
+  	cursor:pointer;
+  	opacity: .8;
+  	.bold;
+  	&:hover{
+  		opacity: 1;
+  	}
+  }
+}
+body {
+  &.dragover {
+    background-color: lighten(@bc, 10%);
+    #playlist{
+			border: 3px dashed #FFF;
+    }
+  }
+}
+.list {}
+.song {
+  
+  @w-play: 80px;
+  @w-tools: 180px;
+  @w-orderer: 20px;
+  @border-radius: 8px;
+  background-color: #FFF;
+  height: @h;
+  border-radius: @border-radius;
+  position: relative;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.4);
+  .btns {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: @h;
+    width: @w-play;
+  }
+  @prop: 0.75;
+  .play-btn {
+    @bc1: #0d0;
+    @bc2: #d00;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: @h;
+    line-height: @prop * @h;
+    width: 100%;
+    background-color: @bc1;
+    color: #FFF;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: @border-radius 0 0 @border-radius;
+    border-right: 1px solid #DDD;
+    .transition(background-color .3s);
+    .fa-pause {
+      display: none;
+    }
+
+    &.playing {
+      background-color: @bc2;
+      .fa-play {
+        display: none;
+      }
+      .fa-pause {
+        display: inline;
+      }
+
+    }
+  }
+  .stop-btn {
+    position: absolute;
+    top: @prop * @h;
+    left: 0;
+    height: (1 - @prop) * @h;
+    line-height: (1 - @prop) * @h;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .2);
+    color: rgba(255, 255, 255, .8);
+    font-size: 12px;
+    border-radius: 0 0 0 @border-radius;
+    .transition(all .3s);
+  }
+  .partiture {
+    position: absolute;
+    top: 0;
+    left: @w-play;
+    right: @w-tools + @w-orderer;
+    height: @h;
+    overflow: hidden;
+    .partiture-data {
+      position: absolute;
+      top: 0;
+      left: 0;
+      //width: 100%;
+      padding-right: 20px;
+      @lh-txt:30px;
+      height: @lh-txt;
+      line-height: @lh-txt;
+      font-size: 14px;
+      background-color: rgba(255,255,255,.6);
+      border-radius: 0 0 @border-radius 0;
+      .title {
+        display: inline-block;
+        padding: 0 20px;
+      }
+      .time {
+        //.bold;
+        opacity: .6;
+        display: inline-block;
+      }
+      .fa-long-arrow-right{
+				 display: inline-block;
+        opacity: .3;
+        margin: 0 5px;
+      }
+      .duration {
+        //.bold;
+        display: inline-block;
+        opacity: .6;
+      }
+    }
+    .partiture-graph {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      width: 100%;
+      height: @h -15px;
+      .loading{
+      	position: absolute;
+      	top: 50%;
+      	left: 50%;
+      	.transform(translateX(-50%) translateY(-50%));
+      	.bold;
+      }
+    }
+  }
+  .tools {
+    position: absolute;
+    top: 0;
+    right: @w-orderer;
+    height: @h;
+    width: @w-tools;
+    border-left: 1px solid #DDD;
+    background-color: #EEE;
+    
+    padding: 5px 10px;
+    font-size: 11px;
+    line-height: 1.6;
+    .label{
+			&.label-term{
+				margin: 10px 0 3px;
+			}
+    }
+    select{
+    	width: 100%;
+    }
+  }
+  .orderer{
+		border-radius: 0 @border-radius @border-radius 0;
+		position: absolute;
+    top: 0;
+    right: 0;
+    height: @h;
+    width: @w-orderer;
+    border-left: 1px solid #CCC;
+    background-color: #DDD;
+    .orderer-btn{
+    	position: absolute;
+    	left: 0;
+    	width: 100%;
+    	text-align: center;
+    	cursor: pointer;    	
+    }
+    .orderer-close{
+    	top: 0;
+    	background-color: #a44;
+    	border-radius: 0 (@border-radius * 0.9) 0 0;
+    	color:#EEE;
+    }
+    @orderer-b-height: 0.5 * (@h - @w-orderer);
+    .orderer-top{
+    	top: @w-orderer;
+    	height: @orderer-b-height;
+    	line-height: @orderer-b-height;
+    }
+    .orderer-bottom{
+    	top:@w-orderer + @orderer-b-height;
+    	height: @orderer-b-height;
+    	line-height: @orderer-b-height;
+    	border-top: 1px solid #BBB;
+    }
+  }
+}
